@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profil Saya</title>
+</head>
+<body>
+    <!-- Heading -->
+    <h1>Profil Mahasiswa</h1>
+
+    <!-- Paragraf -->
+    <p>Halo! Nama saya <b>Willy Dava Nugraha</b>. Saya seorang mahasiswa jurusan S1 Teknik Informatika.</p>
+
+    <!-- Gambar -->
+    <img src="pasfoto_its_biru.jpg" alt="Foto Profil" width="200">
+
+    <!-- List -->
+    <h2>Hobi Saya:</h2>
+    <ul>
+        <li>Analisis Data</li>
+        <li>Bermain game</li>
+    </ul>
+
+    <!-- Tabel -->
+    <h2>Pendidikan</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Tahun</th>
+            <th>Sekolah</th>
+        </tr>
+        <tr>
+            <td>2019 - 2022</td>
+            <td>SMA Negeri 5 Bengkulu</td>
+        </tr>
+        <tr>
+            <td>2024 - Sekarang</td>
+            <td>Insitut Teknologi Sepuluh Nopember</td>
+        </tr>
+    </table>
+
+    <h2>Pengalaman Organisasi</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Tahun</th>
+            <th>Organisasi</th>
+        </tr>
+        <tr>
+            <td>2019 - 2020</td>
+            <td>Departemen 3 OSIS SMAN 5 Bengkulu</td>
+        </tr>
+        <tr>
+            <td>2019 - 2022</td>
+            <td>Debat Cendana SMAN 5 Bengkulu</td>
+        </tr>
+    </table>
+
+    <!-- Form -->
+    <h2>Kontak Saya</h2>
+    <form>
+        <label>Nama:</label><br>
+        <input type="text" name="nama"><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email"><br><br>
+
+        <label>Pesan:</label><br>
+        <textarea name="pesan" rows="4" cols="30"></textarea><br><br>
+
+        <input type="submit" value="Kirim">
+    </form>
+
+    <!-- Form -->
+    <h2>Pendaftaran Teman</h2>
+    <form>
+        <label>Nama:</label><br>
+        <input type="text" name="nama"><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email"><br><br>
+
+        <label>Hobi:</label><br>
+        <textarea name="pesan" rows="4" cols="30"></textarea><br><br>
+
+        <input type="submit" value="Kirim">
+    </form>
+
+    <!-- Link -->
+    <p>Kunjungi <a href="https://instagram.com/wdwdngrh">Instagram</a> saya untuk berkenalan lebih lanjut.</p>
+</body>
+</html>
