@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <style>
+    body {
+        font-family: Arial;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 350px;
+    }
+
+    .form-container h2 {
+        text-align: left;
+        margin-bottom: 20px;
+        color: #00c231;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #00ba09;
+        box-shadow: 0 0 4px rgba(0, 202, 10, 0.5);
+    }
+
+    .button-submit {
+        width: 100%;
+        padding: 12px;
+        background: #00c900;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .button-submit:hover {
+       background: #09e602;
+    }
+    
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #20d300;
+        border-radius: 6px;
+        font-size: 14px;
+        background-color: #ffffff;
+    }
+
+    .form-group select:focus {
+        outline: none;
+        border-color: #27c200;
+        box-shadow: 0 0 4px rgba(4, 210, 28, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form>
+
+      <div class="form-group">
+        <label for="fullname">First Name</label>
+        <input type="text" id="first-name" name="first-name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fullname">Last Name</label>
+        <input type="text" id="last-name" name="last-name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Re-type Password</label>
+        <input type="password" id="Re-type-password" name="Re-type-password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Contact</label>
+        <input type="tel" id="contact" name="contact" required>
+      </div>
+
+        <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        </div>
+      
+      <button type="submit" class="button-submit">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
