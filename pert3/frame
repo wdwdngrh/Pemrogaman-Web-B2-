@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout Frame</title>
+  <style>
+    body {
+        margin: 0;
+        font-family: Arial;
+    }
+
+    .container {
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "nav nav"
+            "sidebar content"
+            "footer footer";
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: auto 50px 1fr 50px;
+        height: 100vh;
+    }
+
+    header {
+        grid-area: header;
+        background: #4aa3ff;
+        text-align: center;
+        padding: 15px;
+        border: 3px solid white;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    nav {
+        grid-area: nav;
+        background: #4aa3ff;
+        text-align: center;
+        padding: 10px;
+        border: 3px solid white;
+        border-top: 8px solid white;
+        border-bottom: 8px solid white;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    aside {
+        grid-area: sidebar;
+        background: #4aa3ff;
+        padding: 15px;
+        border: 3px solid white;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    main {
+        text-align: center;
+        grid-area: content;
+        background: #4aa3ff;
+        padding: 15px;
+        border: 3px solid white;
+        align-items: center;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    footer {
+        grid-area: footer;
+        background: #4aa3ff;
+        text-align: center;
+        padding: 10px;
+        border: 3px solid white;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>Header</header>
+    <nav>Menu Navigasi</nav>
+    <aside>Sidebar</aside>
+    <main>Content</main>
+    <footer>Footer</footer>
+  </div>
+
+</body>
+</html>
