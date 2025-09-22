@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>courseprogrammingcss</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      background: #fff;
+      color: #222;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    h1 { color: #054bb4; margin: 0 0 6px; text-align: center;}
+    .subtitle { font-size: 16px; font-weight: 700; margin: 0 0 12px; color: #222; }
+
+    hr { border: 0; border-top: 1px solid #ccc; margin: 20px 0; }
+
+    h2 { font-size: 22px; margin: 8px 0; }
+
+   
+    .portfolio {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      border: 1px solid #222;
+      border-radius: 5px;
+      width: 220px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .card-header {
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .card-body {
+      padding: 15px;
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    .card-body h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+
+    .card:nth-child(1) .card-header { background-color: #2196f3; } 
+    .card:nth-child(2) .card-header { background-color: #3f51b5; }
+    .card:nth-child(3) .card-header { background-color: #009688; } 
+    .card:nth-child(4) .card-header { background-color: #ff9800; } 
+    
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <hr>
+    <h1>Website Portofolio</h1>
+    <hr>
+    <h2>Portfolio</h2>
+
+    <div class="portfolio">
+
+      <div class="card">
+        <div class="card-header">HTML</div>
+          <div class="card-body">
+          <h3>HTML Tutorials</h3>
+          <p>HTML stands for Hyper Text Markup Language. It is used to design web pages using markup language. HTML is the combination of Hypertext and Markup...</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">CSS</div>
+          <div class="card-body">
+          <h3>CSS Tutorials</h3>
+          <p>Cascading Style Sheets, fondly referred to as CSS, is a simply designed language intended to simplify the process of making web pages presentable...</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">PHP</div>
+          <div class="card-body">
+          <h3>PHP Tutorials</h3>
+          <p>The term PHP is an acronym for PHP: Hypertext Preprocessor. PHP is a widely-used open-source scripting language especially suited for web development...</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">JAVASCRIPT</div>
+          <div class="card-body">
+          <h3>JavaScript  Tutorials</h3>
+          <p>JavaScript was developed by Brendan Eich in 1995. It was initially called LiveScript but was later renamed to JavaScript. JavaScript is the essence of...</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>
