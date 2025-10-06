@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Registrasi, Kode Pos & Dropdown Makanan</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif;}
+
+    body {
+      background-color: #f4f6f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 0;
+      gap: 40px;
+    }
+
+    .form-container, .dropdown-container {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    .form-container h2,
+    .dropdown-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #eee711;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #cdda1b;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #f6ff00;
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background: #f1e905;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      font-size: 15px;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .notification.show {opacity: 1; transform: translateX(-50%) translateY(0);}
+    .notification.error {background: #f44336;}
+    .hasil {margin-top: 15px; text-align:center; font-weight:bold;}
+  </style>
+</head>
+<body>
+
+  <!-- FORM REGISTRASI -->
+  <div class="form-container">
+    <h2>Registrasi Mahasiswa FTEIC</h2>
+    <form id="registrasiForm">
+      <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" name="nama" autocomplete="off" placeholder="Masukkan nama lengkap">
+        <div id="suggestions" class="suggestions" style="display: none;"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Masukkan email aktif">
+      </div>
+
+      <div class="form-group">
+        <label for="Departemen">Departemen</label>
+        <select id="Departemen" name="Departemen">
+          <option value="">-- Pilih Departemen --</option>
+          <option value="elektro">Teknik Elektro</option>
+          <option value="informatika">Teknik Informatika</option>
+          <option value="sistem_informasi">Sistem Informasi</option>
+          <option value="biomedik">Teknik Biomedik</option>
+          <option value="komputer">Teknik Komputer</option>
+          <option value="teknologi_informasi">Teknologi Informasi</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="prodi">Program Studi</label>
+        <select id="prodi" name="prodi">
+          <option value="">-- Pilih Program Studi --</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Daftar</button>
+      <div id="notification" class="notification hidden"></div>
+    </form>
+  </div>
+
+  <!-- BAGIAN KODE POS -->
+  <div class="form-container">
+    <h2>Cari Kode Pos</h2>
+    <form id="kodePosForm">
+      <div class="form-group">
+        <label for="provinsi">Provinsi</label>
+        <select id="provinsi">
+          <option value="">-- Pilih Provinsi --</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="kota">Kabupaten/Kota</label>
+        <select id="kota">
+          <option value="">-- Pilih Kabupaten/Kota --</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="kodepos">Kode Pos</label>
+        <input type="number" id="kodepos" placeholder="Masukkan kode pos...">
+      </div>
+
+      <button type="submit" class="submit-btn" style="background:#4CAF50;">Cek Kode Pos</button>
+    </form>
+
+    <div id="hasil" class="hasil"></div>
+  </div>
+
+  <!-- DROPDOWN MAKANAN -->
+  <div class="dropdown-container">
+    <h2>Pilih Tipe & Menu Makanan</h2>
+    <div>
+      <label for="tipeMakanan">Tipe Makanan:</label>
+      <select id="tipeMakanan">
+        <option value="">-- Pilih Tipe Makanan --</option>
+        <option value="makanan_utama">Makanan Utama</option>
+        <option value="makanan_ringan">Makanan Ringan</option>
+        <option value="minuman">Minuman</option>
+        <option value="dessert">Dessert</option>
+        <option value="tradisional">Makanan Tradisional</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="menuMakanan">Menu Makanan:</label>
+      <select id="menuMakanan">
+        <option value="">-- Pilih Menu Makanan --</option>
+      </select>
+    </div>
+  </div>
+
+  <script>
+    /* ==== DATA NAMA MAHASISWA ==== */
+    const namaMahasiswaList = [
+      "Arif Rahman Hidayat","Bella Oktaviani","Calvin Aditya Putra","Diana Puspitasari",
+      "Erlangga Setiawan","Fitria Ananda","Gilang Prakoso","Helena Marcellina",
+      "Indra Wijaya","Jihan Safitri","Kurniawan Dwi Saputra","Laras Nur Aisyah",
+      "Mikael Jonathan","Nadia Ayu Wulandari","Oscar Mahendra","Puspita Sari",
+      "Qanita Rachmawati","Rafi Al Ghifari","Selvia Handayani","Taufik Rizky Ramadhan",
+      "Ulfa Maulida","Vino Aditya Nugraha","Winda Kartika","Xavier Pranata",
+      "Yolanda Fitriani","Zaki Ramadhan","Hafizh Maulana","Lutfi Rahmadani",
+      "Nurul Amalia","Rizka Putri Nirmala"
+    ];
+
+    const inputNama = document.getElementById("nama");
+    const suggestionsBox = document.getElementById("suggestions");
+
+    inputNama.addEventListener("input", function() {
+      const query = this.value.trim().toLowerCase();
+      suggestionsBox.innerHTML = "";
+
+      if (!query) return suggestionsBox.style.display = "none";
+
+      const matched = namaMahasiswaList.filter(nama => nama.toLowerCase().startsWith(query));
+      if (matched.length === 0) return suggestionsBox.style.display = "none";
+
+      matched.forEach(nama => {
+        const div = document.createElement("div");
+        div.textContent = nama;
+        div.classList.add("suggestion-item");
+        div.addEventListener("click", function() {
+          inputNama.value = nama;
+          suggestionsBox.innerHTML = "";
+          suggestionsBox.style.display = "none";
+        });
+        suggestionsBox.appendChild(div);
+      });
+      suggestionsBox.style.display = "block";
+    });
+
+    document.addEventListener("click", function(event) {
+      if (!inputNama.contains(event.target) && !suggestionsBox.contains(event.target))
+        suggestionsBox.style.display = "none";
+    });
+
+    /* ==== DATA PRODI ==== */
+    const prodiData = {
+      elektro: ["S1 Teknik Elektro", "S1 Teknik Telekomunikasi"],
+      informatika: ["S1 Teknik Informatika", "S1 Rekayasa Perangkat Lunak", "S1 Rekayasa Kecerdasan Artifisial"],
+      sistem_informasi: ["S1 Sistem Informasi", "S1 Inovasi Digital"],
+      biomedik: ["S1 Teknik Biomedik"],
+      komputer: ["S1 Teknik Komputer"],
+      teknologi_informasi: ["S1 Teknologi Informasi"]
+    };
+
+    const DepartemenSelect = document.getElementById("Departemen");
+    const prodiSelect = document.getElementById("prodi");
+
+    DepartemenSelect.addEventListener("change", function() {
+      const Departemen = this.value;
+      prodiSelect.innerHTML = '<option value="">-- Pilih Prodi --</option>';
+      if (Departemen && prodiData[Departemen]) {
+        prodiData[Departemen].forEach(p => {
+          const option = document.createElement("option");
+          option.value = p.toLowerCase().replace(/\s+/g, "-");
+          option.textContent = p;
+          prodiSelect.appendChild(option);
+        });
+      }
+    });
+
+    function showNotification(message, type="success") {
+      const notif = document.getElementById("notification");
+      notif.textContent = message;
+      notif.className = "notification";
+      if (type === "error") notif.classList.add("error");
+      notif.classList.add("show");
+      setTimeout(() => notif.classList.remove("show"), 3000);
+    }
+
+    document.getElementById("registrasiForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nama = inputNama.value.trim();
+      const email = document.getElementById("email").value.trim();
+      const Departemen = DepartemenSelect.value.trim();
+      const prodi = prodiSelect.value.trim();
+      if (!nama) return showNotification("Nama tidak boleh kosong!","error");
+      if (!email) return showNotification("Email tidak boleh kosong!","error");
+      if (!Departemen || !prodi) return showNotification("Departemen dan prodi belum dipilih!","error");
+      showNotification("Registrasi berhasil untuk " + nama);
+      this.reset();
+      prodiSelect.innerHTML = '<option value="">-- Pilih Prodi --</option>';
+    });
+
+    /* ==== BAGIAN KODE POS ==== */
+    const dataKodePos = {
+      "Bengkulu": {
+        "Kota Bengkulu": {"38224": "Kecamatan Ratu Agung"},
+        "Kabupaten Kepahiang": {"39377": "Kecamatan Seberang Musi"}
+      },
+      "Sumatera Selatan": {
+        "Kabupaten Musi Rawas Utara": {"31669": "Kecamatan Ulu Rawas"},
+        "Kabupaten Empat Lawang": {"31597": "Kecamatan Ulu Musi"}
+      }
+    };
+
+    const provinsiSelect = document.getElementById("provinsi");
+    const kotaSelect = document.getElementById("kota");
+    const kodePosInput = document.getElementById("kodepos");
+    const hasilDiv = document.getElementById("hasil");
+
+    Object.keys(dataKodePos).forEach(prov => {
+      const option = document.createElement("option");
+      option.value = prov;
+      option.textContent = prov;
+      provinsiSelect.appendChild(option);
+    });
+
+    provinsiSelect.addEventListener("change", function() {
+      const provinsi = this.value;
+      kotaSelect.innerHTML = '<option value="">-- Pilih Kabupaten/Kota --</option>';
+      if (provinsi && dataKodePos[provinsi]) {
+        Object.keys(dataKodePos[provinsi]).forEach(kota => {
+          const option = document.createElement("option");
+          option.value = kota;
+          option.textContent = kota;
+          kotaSelect.appendChild(option);
+        });
+      }
+    });
+
+    document.getElementById("kodePosForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const provinsi = provinsiSelect.value;
+      const kota = kotaSelect.value;
+      const kode = kodePosInput.value;
+      if (provinsi && kota && kode) {
+        const kotaData = dataKodePos[provinsi][kota];
+        if (kotaData && kotaData[kode]) {
+          hasilDiv.innerHTML = `
+            ✅ Kode Pos Cocok!<br>
+            Provinsi: <b>${provinsi}</b><br>
+            Kota: <b>${kota}</b><br>
+            Kecamatan: <b>${kotaData[kode]}</b>`;
+          hasilDiv.style.color = "green";
+        } else {
+          hasilDiv.textContent = "❌ Tidak ditemukan.";
+          hasilDiv.style.color = "red";
+        }
+      } else {
+        hasilDiv.textContent = "⚠️ Mohon lengkapi semua data.";
+        hasilDiv.style.color = "orange";
+      }
+    });
+
+    /* ==== BAGIAN DROPDOWN MAKANAN ==== */
+    const menuData = {
+      makanan_utama: ["Nasi Goreng", "Sate Ayam", "Rendang", "Soto Ayam", "Nasi Padang"],
+      makanan_ringan: ["Keripik Singkong", "Pisang Goreng", "Tempe Mendoan", "Roti Bakar", "Martabak Mini"],
+      minuman: ["Es Teh Manis", "Kopi Hitam", "Jus Alpukat", "Wedang Jahe", "Soda Gembira"],
+      dessert: ["Puding Cokelat", "Es Krim Vanila", "Cheesecake", "Brownies", "Pancake"],
+      tradisional: ["Klepon", "Lupis", "Wajik", "Getuk", "Serabi"]
+    };
+
+    const tipeSelect = document.getElementById("tipeMakanan");
+    const menuSelect = document.getElementById("menuMakanan");
+
+    tipeSelect.addEventListener("change", function() {
+      const tipe = this.value;
+      menuSelect.innerHTML = '<option value="">-- Pilih Menu Makanan --</option>';
+      if (tipe && menuData[tipe]) {
+        menuData[tipe].forEach(p => {
+          const option = document.createElement("option");
+          option.value = p.toLowerCase().replace(/\s+/g, "-");
+          option.textContent = p;
+          menuSelect.appendChild(option);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
